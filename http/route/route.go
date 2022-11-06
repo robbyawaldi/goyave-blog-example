@@ -15,8 +15,9 @@ import (
 
 // Register all the application routes. This is the main route registrer.
 func Register(router *goyave.Router) {
-
-	router.CORS(cors.Default())
+	options := cors.Default()
+	options.AllowedOrigins = []string{"*"}
+	router.CORS(options)
 	router.GlobalMiddleware(log.CombinedLogMiddleware())
 	router.GlobalMiddleware(ratelimiter.New(model.RateLimiterFunc))
 

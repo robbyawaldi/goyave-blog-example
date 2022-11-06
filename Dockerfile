@@ -1,14 +1,12 @@
-FROM golang:1.17-alpine
+FROM golang:1.17
 
 LABEL maintainer="Jérémy LAMBERT (SystemGlitch) <jeremy.la@outlook.fr>"
 
-RUN apk update && apk upgrade && apk add --no-cache git openssh gcc libc-dev
 RUN go get github.com/cespare/reflex
 
-ENV DOCKERIZE_VERSION v0.6.1
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+RUN wget https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-alpine-linux-amd64-v0.6.1.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-v0.6.1.tar.gz \
+    && rm dockerize-alpine-linux-amd64-v0.6.1.tar.gz
 
 WORKDIR /app
 
