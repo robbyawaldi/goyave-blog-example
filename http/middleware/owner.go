@@ -11,9 +11,9 @@ import (
 )
 
 // Owner checks if the authenticated user is the owner of the requested resource.
-//  - param: the name of the URL parameter to use
-//  - column: the name of the foreign key column
-//  - model: the model of the requested resource
+//   - param: the name of the URL parameter to use
+//   - column: the name of the foreign key column
+//   - model: the model of the requested resource
 func Owner(param, column string, model interface{}) goyave.Middleware {
 	return func(next goyave.Handler) goyave.Handler {
 		return func(response *goyave.Response, request *goyave.Request) {
